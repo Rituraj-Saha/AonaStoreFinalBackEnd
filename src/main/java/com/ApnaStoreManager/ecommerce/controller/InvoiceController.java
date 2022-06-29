@@ -10,34 +10,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ApnaStoreManager.ecommerce.model.Product;
-import com.ApnaStoreManager.ecommerce.model.Shop;
-import com.ApnaStoreManager.ecommerce.service.ShopService;
+import com.ApnaStoreManager.ecommerce.service.InvoiceService;
+import com.ApnaStoreManager.ecommerce.model.Invoice;
+
 
 @RestController
-@RequestMapping("/api/shop")
-public class ShopController {
+@RequestMapping("/api/invoice")
+public class InvoiceController {
 	
-	ShopService shopService;
+	InvoiceService invoiceService;
 
-	public ShopController(ShopService shopService) {
+	public InvoiceController(InvoiceService invoiceService) {
 		super();
-		this.shopService = shopService;
+		this.invoiceService = invoiceService;
 	}
 	@GetMapping("/hello")
 	public String hello() {
 		return "hello";
 	}
 	
-	@PostMapping("/save-shop")
-	public ResponseEntity<Shop> saveShop(@RequestBody Shop shop){
+	@PostMapping("/generate")
+	public ResponseEntity<Invoice> saveShop(@RequestBody Invoice bill){
 		
-		 return new ResponseEntity<>(shopService.saveShop(shop), HttpStatus.OK);
+		 return new ResponseEntity<>(invoiceService.saveShop(bill), HttpStatus.OK);
 	        
 	}
-	@GetMapping("/get-shop")
-	public ResponseEntity<Shop> saveShop(@RequestParam long id){
+	@GetMapping("/get-bill")
+	public ResponseEntity<Invoice> saveShop(@RequestParam long id){
 		
-		 return new ResponseEntity<>(shopService.findShop(id), HttpStatus.OK);
+		 return new ResponseEntity<>(invoiceService.findShop(id), HttpStatus.OK);
 	        
 	}
 

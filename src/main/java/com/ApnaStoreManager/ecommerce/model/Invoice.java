@@ -11,26 +11,19 @@ import lombok.Data;
 
 @Data
 @Entity //by this this class will be considered as jpa entity
-@Table(name="products")
-public class Product {
-	
+@Table(name="invoice")
+public class Invoice {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long pid;//product id
+	private long id;//bill id
 	
-	@Column(name="pname", nullable=false)
-	private String pname;
+	@Column(name="customer_id", nullable=false)
+	private String customer_id;
 	
 	
-	@Column(name="price", nullable=false)
-	private String price;
+	@Column(name="date", nullable=false)
+	private String date;
 	
-	@Column(name="tax", nullable=false)
-	private String tax;
-	
-	@Column(name="discount", nullable=false)
-	private String discount;
-	
-	@Column(name="Qnty", nullable=false)
-	private String Qnty;
+	@Column(name="details", nullable=false)
+	private String details;
 }
